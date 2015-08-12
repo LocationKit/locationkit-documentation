@@ -290,7 +290,9 @@ textarea {
 .header-bar h2 {
   margin-top: 0;
   color: #FC6719;
-  padding-top: 0px;
+  padding-top: 12px;
+  font-size: 18px;
+  font-family: "Lato", Helvetica, Arial, sanserif;
   text-transform: uppercase;
 }
 

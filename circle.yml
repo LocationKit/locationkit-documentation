@@ -6,7 +6,7 @@ dependencies:
 
 deployment:
   development:
-    branch: dev
+    branch: development
     commands:
       - ./stout deploy --env development --key $AMAZON_KEY_DEV --secret $AMAZON_SECRET_DEV
 

@@ -1,0 +1,5 @@
+production:
+  bucket: 'docs.locationkit.io'
+
+development:
+  bucket: 'docs-next.locationkit.io'

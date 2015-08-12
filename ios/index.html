@@ -32,13 +32,13 @@
                       <a href="https://locationkit.io" class="pure-menu-heading pure-menu-link"><img src='https://cdn.socialradar.com/images/locationkit-logoonly.png' height=64 /></a>
                       <ul class="pure-menu-list">
                           <li class="pure-menu-item">
-                              <h2><a href="https://dashboard.locationkit.io" class="pure-menu-link">Dashboard</a></h2>
-                          </li>
-                          <li class="pure-menu-item">
                               <h2><a href="https://community.locationkit.io" class="pure-menu-link">Community</a></h2>
                           </li>
                           <li class="pure-menu-item">
                               <h2><a href="https://docs.locationkit.io" class="pure-menu-link">Documentation</a></h2>
+                          </li>
+                          <li class="pure-menu-item">
+                              <h2><a href="https://locationkit.io/blog" class="pure-menu-link">Blog</a></h2>
                           </li>
                           <li class="pure-menu-item">
                               <h2><a href="https://locationkit.io/developer/faqs/" class="pure-menu-link">FAQs</a></h2>
@@ -159,7 +159,7 @@ find insights into the location-based usage of your app with LocationKit.</p>
 <p>The easiest way to start using LocationKit in your project is by using
 <a href="https://cocoapods.org">CocoaPods</a>; add LocationKit to your Podfile with the
 code on the right.</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'LocationKit'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'LocationKit'</span><span class="p">,</span> <span class="s1">'~&gt; 2.2.0'</span>
 </code></pre>
 
 <p>Then just run <code class="prettyprint">pod install</code> from your project root.</p>
@@ -215,9 +215,9 @@ notice a new file created called:
 <p>We recommend starting LocationKit in your AppDelegate, particularly in the
 <code class="prettyprint">didFinishLaunchingWithOptions</code> method so it&rsquo;s accessible and running throughout
 your app. Start it with the snippet on the right:</p>
-<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">andDelegate</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 </code></pre>
-<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">andDelegate</span><span class="p">:</span><span class="kc">nil</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="kc">nil</span><span class="p">)</span>
 </code></pre>
 
 <p>Optionally, you can provide a <code class="prettyprint">LocationKitDelegate</code> which will receive a
@@ -231,9 +231,9 @@ delegate will receive the background updates and they will be ignored.</p>
 <blockquote>
 <p>Start LocationKit with a nil delegate</p>
 </blockquote>
-<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">andDelegate</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 </code></pre>
-<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">andDelegate</span><span class="p">:</span><span class="kc">nil</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="kc">nil</span><span class="p">)</span>
 </code></pre>
 
 <p><em>Use:</em> Kick off LocationKit using the API token you received from the <a href="https://dashboard.locationkit.io">Developer
@@ -246,9 +246,9 @@ or arriving/leaving a place.</p>
 <blockquote>
 <p>Start LocationKit with an object implementing the LocationKitDelegate protocol</p>
 </blockquote>
-<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">andDelegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">];</span>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">];</span>
 </code></pre>
-<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">andDelegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">)</span>
 </code></pre>
 
 <p><em>Notes:</em></p>
@@ -261,6 +261,92 @@ instance variable owned by your ViewController or AppDelegate or wherever it
 makes sense.</li>
 <li>This will require permission from your users to run in the background, which
 you will have if you configured things following the instructions above.</li>
+</ul>
+
+<h2 id="start-locationkit-with-options">Start LocationKit with options</h2>
+
+<p><em>Use:</em> We have some optional options which can be supplied to slightly alter the
+default behavior of LocationKit. To set them, start with an NSDictionary with
+our constants as the keys.</p>
+
+<p>The options we have available:</p>
+
+<blockquote>
+<p>Example of starting LocationKit with the timed updates option</p>
+</blockquote>
+<pre class="highlight objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="n">LKOptionTimedUpdatesInterval</span><span class="o">:</span> <span class="mi">@10</span><span class="p">}</span>
+<span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">myDelegate</span> <span class="nf">options</span><span class="p">:</span><span class="n">options</span><span class="p">];</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">options</span><span class="p">:</span><span class="kt">NSDictionary</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kt">LKOptionTimedUpdatesInterval</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">];</span>
+<span class="k">var</span> <span class="nv">locationKit</span> <span class="o">=</span> <span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span>
+<span class="n">locationKit</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span><span class="n">options</span><span class="p">)</span>
+</code></pre>
+
+<ul>
+<li><strong>LKOptionTimedUpdatesInterval</strong> - Start LocationKit with a timed interval
+update. For example, this would allow you to receive an update every 60 seconds
+overriding LocationKit&rsquo;s default behavior. Note: For the first 5 minutes after
+install, LocationKit will be in a higher mode so your interval won&rsquo;t take effect
+until after that first 5 minutes. Also, this has the potential to significantly
+increase battery drain so generally we don&rsquo;t recommend it!</li>
+</ul>
+
+<blockquote>
+<p>Example of starting LocationKit with iOS CoreMotion manager rather than accelerometer</p>
+</blockquote>
+<pre class="highlight objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="n">LKOptionUseiOSMotionActivity</span><span class="o">:</span> <span class="nb">YES</span><span class="p">}</span>
+<span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">myDelegate</span> <span class="nf">options</span><span class="p">:</span><span class="n">options</span><span class="p">];</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">options</span><span class="p">:</span><span class="kt">NSDictionary</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kt">LKOptionUseiOSMotionActivity</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">];</span>
+<span class="k">var</span> <span class="nv">locationKit</span> <span class="o">=</span> <span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span>
+<span class="n">locationKit</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span><span class="n">options</span><span class="p">)</span>
+</code></pre>
+
+<ul>
+<li><strong>LKOptionUseiOSMotionActivity</strong> - By default, LocationKit will use the
+device&rsquo;s accelerometer to determine user motion activity and take action based
+on it. We do things like throttle the GPS up and down to minimize battery drain
+based on whether a user is walking or sitting still. By enabling this option,
+you can tell LocationKit to use the CoreMotion manager instead of the
+accelerometer. This will result in lower battery drain because it uses the
+motion coprocessor on the device for this detection rather than the
+accelerometer, however it will surface a dialog to the user if your app does not
+yet have permission to track the user&rsquo;s movements. For some apps (e.g. a fitness
+app) you have likely already prompted the user for this permission so it is wise
+to turn this on.</li>
+</ul>
+
+<blockquote>
+<p>Example of starting LocationKit in Foreground-only mode</p>
+</blockquote>
+<pre class="highlight objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="n">LKOptionWhenInUseOnly</span><span class="o">:</span> <span class="nb">YES</span><span class="p">}</span>
+<span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">myDelegate</span> <span class="nf">options</span><span class="p">:</span><span class="n">options</span><span class="p">];</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">options</span><span class="p">:</span><span class="kt">NSDictionary</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kt">LKOptionWhenInUseOnly</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">];</span>
+<span class="k">var</span> <span class="nv">locationKit</span> <span class="o">=</span> <span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span>
+<span class="n">locationKit</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span><span class="n">options</span><span class="p">)</span>
+</code></pre>
+
+<ul>
+<li><strong>LKOptionWhenInUseOnly</strong> - By default, LocationKit requires the
+<code class="prettyprint">NSLocationAlwaysUsageDescription</code> permission to be set in the Info.plist and
+will prompt the user for permission to run always in the background. You can
+override this and require LocationKit to only run in the foreground. To do this,
+add the <code class="prettyprint">NSLocationWhenInUseUsageDescription</code> permission to the Info.plist.
+Note: this will severely impact the usefulness of the location analytics we
+provide, make all of the background updates impossible (because we cannot
+provide background updates without access to the user&rsquo;s location in the
+background), and diminish the accuracy of place lookups (because a lot of what
+we do with LocationKit involves monitoring sensors on the device while the app
+is in the background and we can&rsquo;t do that without having permission to do so)
+If you have questions, contact us at
+<a href="support@locationkit.io">support@locationkit.io</a></li>
 </ul>
 
 <h2 id="pause">Pause</h2>
@@ -411,10 +497,14 @@ location.</p>
 <blockquote>
 <p>Start LocationKit with an NSTimeInterval to get timed background updates</p>
 </blockquote>
-<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">andDelegate</span><span class="p">:</span><span class="n">myDelegate</span> <span class="nf">withTimeInterval</span><span class="p">:</span><span class="n">myTimeInterval</span><span class="p">];</span>
+<pre class="highlight objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="n">LKOptionTimedUpdatesInterval</span><span class="o">:</span> <span class="mi">@10</span><span class="p">}</span>
+<span class="p">[[</span><span class="n">LocationKit</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startWithApiToken</span><span class="p">:</span><span class="s">@"your_api_token"</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">myDelegate</span> <span class="nf">options</span><span class="p">:</span><span class="n">options</span><span class="p">];</span>
 </code></pre>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">locationKit</span> <span class="o">=</span> <span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span>
-<span class="n">locationKit</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">andDelegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">,</span> <span class="nv">andTimeInterval</span><span class="p">:</span><span class="n">myTimeInterval</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">options</span><span class="p">:</span><span class="kt">NSDictionary</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kt">LKOptionTimedUpdatesInterval</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">];</span>
+<span class="k">var</span> <span class="nv">locationKit</span> <span class="o">=</span> <span class="kt">LocationKit</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span>
+<span class="n">locationKit</span><span class="o">.</span><span class="nf">startWithApiToken</span><span class="p">(</span><span class="s">"your_api_token"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span><span class="n">myDelegate</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span><span class="n">options</span><span class="p">)</span>
 </code></pre>
 
 <p><em>Use:</em> Start LocationKit in a mode where it provides regularly timed updates,
@@ -658,7 +748,7 @@ and the user&rsquo;s current venue as an LKVenue.</p>
 
 <p>LocationKit is primarily available for download as a
 <a href="https://cocoapods.org/pods/LocationKit">CocoaPod</a></p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'LocationKit'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'LocationKit'</span><span class="p">,</span> <span class="s1">'~&gt; 2.2.0'</span>
 </code></pre>
 
 <h2 id="cordova">Cordova</h2>

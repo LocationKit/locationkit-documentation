@@ -8,9 +8,9 @@ deployment:
   development:
     branch: development
     commands:
-      - ./stout deploy --bucket docs-next.locationkit.io --key $AMAZON_KEY_DEV --secret $AMAZON_SECRET_DEV
+      - ./stout deploy --env development --key $AMAZON_KEY_DEV --secret $AMAZON_SECRET_DEV
 
   production:
     branch: master
     commands:
-      - ./stout deploy --bucket docs.locationkit.io --key $AMAZON_KEY_PROD --secret $AMAZON_SECRET_PROD
+      - ./stout deploy --env production --key $AMAZON_KEY_PROD --secret $AMAZON_SECRET_PROD
